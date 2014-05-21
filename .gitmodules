@@ -1,0 +1,3 @@
+[submodule "vendor/iBeacon-AndroidScala"]
+	path = vendor/iBeacon-AndroidScala
+	url = git@github.com:shokai/iBeacon-AndroidScala.git
