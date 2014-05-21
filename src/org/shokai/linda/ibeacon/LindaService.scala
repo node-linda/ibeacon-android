@@ -11,6 +11,7 @@ class LindaService extends Service{
   lazy val appName:String = getResources().getString(R.string.app_name)
   lazy val iBeacon:IBeacon = new IBeacon(this)
   lazy val notifer:Notifer = new Notifer(appName, this)
+  val door = new Door()
 
   var handler:Handler = null
 
@@ -22,8 +23,8 @@ class LindaService extends Service{
     val looper = thread.getLooper()
     handler = new Handler(looper){
       override def handleMessage(msg:Message){
-        iBeacon.onDiscover((beacon:Beacon) =>
-          print(s"UUID=${beacon.uuid} Major=${beacon.major} Minor=${beacon.minor} RSSI=${beacon.rssi}")
+        iBeacon.onBeacon((beacon:Beacon) =>
+          door.open(beacon)
         )
 
       }
