@@ -5,11 +5,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Hello World, Linda"
-    />
   <Button
       android:id="@+id/btnStart"
       android:text="start service"
@@ -20,5 +15,14 @@
       android:text="stop service"
       android:layout_height="wrap_content"
       android:layout_width="match_parent" />
+  <TextView
+      android:id="@+id/textViewRssi"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="Beacon RSSI Threshold" />
+  <SeekBar
+      android:id="@+id/seekBarRssi"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content" />
 </LinearLayout>
 
