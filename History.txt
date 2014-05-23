@@ -1,0 +1,4 @@
+=== 0.0.1 2013-05-24
+
+* detect Region with iBeacon, write door-open Tuple
+* configure Beacon RSSI threshold on MainActivity
