@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <integer name="rssi_min">-80</integer>
+  <integer name="rssi_min">-90</integer>
   <integer name="rssi_max">-50</integer>
 </resources>
