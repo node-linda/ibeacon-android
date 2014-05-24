@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.shokai.linda.ibeacon"
     android:versionCode="1"
-    android:versionName="0.0.2">
+    android:versionName="@string/version">
   <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
     <activity
         android:name="MainActivity"

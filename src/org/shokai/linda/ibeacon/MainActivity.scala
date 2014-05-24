@@ -11,6 +11,7 @@ class MainActivity extends Activity{
   import scala.collection.immutable.Range;
 
   lazy val appName:String = getResources().getString(R.string.app_name)
+  lazy val version:String = getResources().getString(R.string.version)
   lazy val btnStart:Button = findViewById(R.id.btnStart).asInstanceOf[Button]
   lazy val btnStop:Button = findViewById(R.id.btnStop).asInstanceOf[Button]
   lazy val serviceIntent:Intent = new Intent(this, classOf[LindaService])
@@ -31,6 +32,8 @@ class MainActivity extends Activity{
     print(s"app start (threshold:${threshold})")
 
     val self = this
+
+    setTitle(s"${appName} v${version}")
 
     btnStart.setOnClickListener( new View.OnClickListener(){
       override def onClick(v:View){
