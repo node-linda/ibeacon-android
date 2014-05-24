@@ -35,3 +35,9 @@ Develop
 -------
 
     % sbt "~ android:run"
+
+
+Release
+-------
+
+    % sbt android:packageRelease
