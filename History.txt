@@ -1,3 +1,7 @@
+=== 0.0.2 2013-05-24
+
+* modify RSSI min value -80 -> -90
+
 === 0.0.1 2013-05-24
 
 * detect Region with iBeacon, write door-open Tuple
