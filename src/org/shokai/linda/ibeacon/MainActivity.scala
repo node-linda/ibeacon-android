@@ -4,7 +4,7 @@ import android.app.{Activity, PendingIntent};
 import android.os.Bundle;
 import android.content.{Context, Intent, SharedPreferences};
 import android.widget.{Button, SeekBar, TextView};
-import android.view.View;
+import android.view.{View, Menu, MenuInflater, MenuItem};
 import android.util.Log;
 
 class MainActivity extends Activity{
@@ -12,6 +12,7 @@ class MainActivity extends Activity{
 
   lazy val appName:String = getResources().getString(R.string.app_name)
   lazy val version:String = getResources().getString(R.string.version)
+  lazy val githubUrl:String = getResources().getString(R.string.github)
   lazy val btnStart:Button = findViewById(R.id.btnStart).asInstanceOf[Button]
   lazy val btnStop:Button = findViewById(R.id.btnStop).asInstanceOf[Button]
   lazy val serviceIntent:Intent = new Intent(this, classOf[LindaService])
@@ -64,6 +65,23 @@ class MainActivity extends Activity{
       }
     })
 
+  }
+
+  override def onCreateOptionsMenu(menu:Menu):Boolean = {
+    val inflater:MenuInflater = getMenuInflater()
+    inflater.inflate(R.layout.main_menu, menu)
+    return super.onCreateOptionsMenu(menu)
+  }
+
+  override def onOptionsItemSelected(item:MenuItem):Boolean = {
+    item.getItemId() match {
+      case R.id.menu_github => {
+        startActivity(new Intent(Intent.ACTION_VIEW,
+                                 android.net.Uri.parse(githubUrl)))
+        return true
+      }
+    }
+    return super.onOptionsItemSelected(item)
   }
 
   def print(msg:String){

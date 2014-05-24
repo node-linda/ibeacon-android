@@ -2,4 +2,5 @@
 <resources>
   <string name="app_name">linda-iBeacon</string>
   <string name="version">0.0.2</string>
+  <string name="github">https://github.com/node-linda/ibeacon-android</string>
 </resources>
