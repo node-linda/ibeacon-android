@@ -25,8 +25,8 @@ class MainActivity extends Activity{
   lazy val textViewRssi:TextView = findViewById(R.id.textViewRssi).asInstanceOf[TextView]
 
   override def onCreate(savedInstanceState:Bundle){
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.main);
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.main)
 
     var threshold:Int = pref.getInt("threshold", rssiRange(rssiRange.size/2))
 
