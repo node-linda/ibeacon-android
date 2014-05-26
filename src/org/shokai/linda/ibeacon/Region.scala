@@ -15,7 +15,7 @@ class Region(baseUrl:String, space:String, who:String){
 
   val tuple = new JSONObject(
     Map("type" -> "region",
-        "name" -> "delta",
+        "where" -> "delta",
         "who" -> who)
   )
 
