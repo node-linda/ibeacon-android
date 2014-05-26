@@ -1,3 +1,9 @@
+=== 0.0.3 2013-05-26
+
+* add github link on menu  #5
+* show version info  #3
+* export config to res/values/string.xml
+
 === 0.0.2 2013-05-24
 
 * modify RSSI min value -80 -> -90
