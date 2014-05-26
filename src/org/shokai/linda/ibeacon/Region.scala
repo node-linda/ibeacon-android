@@ -1,33 +1,38 @@
 package org.shokai.linda.ibeacon;
 
+import collection.JavaConversions._
 import org.shokai.ibeacon.Beacon;
 import android.net.http.AndroidHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import java.util.ArrayList;
 import android.util.Log;
+import org.json.JSONObject;
 
 class Region(baseUrl:String, space:String, who:String){
 
   val client = AndroidHttpClient.newInstance("linda-ibeacon-android")
-  val enterTuple = "{\"type\":\"region\",\"name\":\"delta\",\"who\":\""+who+"\",\"action\":\"enter\"}"
-  val leaveTuple = "{\"type\":\"region\",\"name\":\"delta\",\"who\":\""+who+"\",\"action\":\"leave\"}"
+
+  val tuple = new JSONObject(
+    Map("type" -> "region",
+        "name" -> "delta",
+        "who" -> who)
+  )
 
   private def post(tuple:String){
     val post = new HttpPost(s"${baseUrl}/${space}")
     post.setEntity(new UrlEncodedFormEntity( 
-      java.util.Arrays.asList( new BasicNameValuePair("tuple", tuple) )
+      List( new BasicNameValuePair("tuple", tuple) )
     ))
     client.execute(post)
   }
 
   def enter(){
-    post(enterTuple)
+    post(tuple.put("action","enter").toString())
   }
 
   def leave(){
-    post(leaveTuple)
+    post(tuple.put("action","leave").toString())
   }
 
 }
