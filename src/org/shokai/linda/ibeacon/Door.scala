@@ -8,12 +8,10 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import java.util.ArrayList;
 import android.util.Log;
 
-class Door{
+class Door(baseUrl:String, space:String){
 
-  val baseUrl = "http://node-linda-base.herokuapp.com"
   val client = AndroidHttpClient.newInstance("linda-ibeacon-android")
   val tuple = "{\"type\":\"door\",\"cmd\":\"open\"}"
-  val space = "delta"
 
   def open(){
     val post = new HttpPost(s"${baseUrl}/${space}")

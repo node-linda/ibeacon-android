@@ -3,4 +3,9 @@
   <string name="app_name">linda-iBeacon</string>
   <string name="version">0.0.2</string>
   <string name="github">https://github.com/node-linda/ibeacon-android</string>
+  <string name="linda">http://node-linda-base.herokuapp.com</string>
+  <string name="tuplespace">delta</string>
+  <string name="uuid">B0FC4601-14A6-43A1-ABCD-CB9CFDDB4013</string>
+  <string name="major">0001</string>
+  <string name="minor">0094</string>
 </resources>
