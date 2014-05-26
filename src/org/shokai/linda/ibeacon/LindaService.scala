@@ -11,8 +11,9 @@ class LindaService extends Service{
   lazy val appName:String = getResources().getString(R.string.app_name)
   lazy val iBeacon:IBeacon = new IBeacon(this)
   lazy val notifer:Notifer = new Notifer(appName, this)
-  lazy val door = new Door(getResources().getString(R.string.linda),
-                      getResources().getString(R.string.tuplespace))
+  lazy val region = new Region(getResources().getString(R.string.linda),
+                               getResources().getString(R.string.tuplespace),
+                               "shokai")
   lazy val rssiRange:Range = Range(getResources().getInteger(R.integer.rssi_min),
                                    getResources().getInteger(R.integer.rssi_max))
   lazy val pref:SharedPreferences = getSharedPreferences(appName, Context.MODE_PRIVATE)
@@ -35,11 +36,12 @@ class LindaService extends Service{
         print(s"watch UUID=${uuid} major=${major} minor=${minor}")
         iBeacon.onRegion(uuid, major, minor, Range(-90, threshold), (beacon:Beacon) => {
           alert(s"outside of DeltaS112 (RSSI:${beacon.rssi})")
+          region.leave()
         })
 
         iBeacon.onRegion(uuid, major, minor, Range(threshold, 0), (beacon:Beacon) => {
           alert(s"door open DeltaS112 (RSSI:${beacon.rssi})")
-          door.open()
+          region.enter()
         })
       }
     }

@@ -8,17 +8,26 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import java.util.ArrayList;
 import android.util.Log;
 
-class Door(baseUrl:String, space:String){
+class Region(baseUrl:String, space:String, who:String){
 
   val client = AndroidHttpClient.newInstance("linda-ibeacon-android")
-  val tuple = "{\"type\":\"door\",\"cmd\":\"open\"}"
+  val enterTuple = "{\"type\":\"region\",\"name\":\"delta\",\"who\":\""+who+"\",\"action\":\"enter\"}"
+  val leaveTuple = "{\"type\":\"region\",\"name\":\"delta\",\"who\":\""+who+"\",\"action\":\"leave\"}"
 
-  def open(){
+  private def post(tuple:String){
     val post = new HttpPost(s"${baseUrl}/${space}")
     post.setEntity(new UrlEncodedFormEntity( 
       java.util.Arrays.asList( new BasicNameValuePair("tuple", tuple) )
     ))
     client.execute(post)
+  }
+
+  def enter(){
+    post(enterTuple)
+  }
+
+  def leave(){
+    post(leaveTuple)
   }
 
 }
