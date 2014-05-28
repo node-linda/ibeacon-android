@@ -1,3 +1,7 @@
+=== 0.1.0 2013-05-28
+
+* write Region tuple
+
 === 0.0.3 2013-05-26
 
 * add github link on menu  #5
