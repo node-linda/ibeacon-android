@@ -13,11 +13,12 @@ class LindaService extends Service{
   lazy val notifer:Notifer = new Notifer(appName, this)
   lazy val region = new Region(getResources().getString(R.string.linda),
                                getResources().getString(R.string.tuplespace),
-                               "shokai")
+                               who)
   lazy val rssiRange:Range = Range(getResources().getInteger(R.integer.rssi_min),
                                    getResources().getInteger(R.integer.rssi_max))
   lazy val pref:SharedPreferences = getSharedPreferences(appName, Context.MODE_PRIVATE)
   lazy val threshold:Int = pref.getInt("threshold", rssiRange(rssiRange.size/2))
+  lazy val who:String = pref.getString("who", getResources().getString(R.string.default_who))
 
   lazy val uuid = getResources().getString(R.string.uuid)
   lazy val major = getResources().getString(R.string.major)
@@ -26,7 +27,7 @@ class LindaService extends Service{
   var handler:Handler = null
 
   override def onCreate{
-    alert(s"start service (threshold:${threshold})")
+    alert(s"start service (threshold:${threshold}) as ${who}")
 
     var thread:HandlerThread = new HandlerThread(appName, Process.THREAD_PRIORITY_BACKGROUND)
     thread.start()
@@ -35,12 +36,12 @@ class LindaService extends Service{
       override def handleMessage(msg:Message){
         print(s"watch UUID=${uuid} major=${major} minor=${minor}")
         iBeacon.onRegion(uuid, major, minor, Range(-90, threshold), (beacon:Beacon) => {
-          alert(s"outside of DeltaS112 (RSSI:${beacon.rssi})")
+          alert(s"leave DeltaS112 (RSSI:${beacon.rssi})")
           region.leave()
         })
 
         iBeacon.onRegion(uuid, major, minor, Range(threshold, 0), (beacon:Beacon) => {
-          alert(s"door open DeltaS112 (RSSI:${beacon.rssi})")
+          alert(s"enter DeltaS112 (RSSI:${beacon.rssi})")
           region.enter()
         })
       }

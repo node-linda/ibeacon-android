@@ -24,5 +24,10 @@
       android:id="@+id/seekBarRssi"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content" />
+  <EditText
+      android:id="@+id/editTextWho"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/default_who" />
 </LinearLayout>
 

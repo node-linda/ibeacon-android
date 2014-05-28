@@ -3,7 +3,7 @@ package org.shokai.linda.ibeacon;
 import android.app.{Activity, PendingIntent};
 import android.os.Bundle;
 import android.content.{Context, Intent, SharedPreferences};
-import android.widget.{Button, SeekBar, TextView};
+import android.widget.{Button, SeekBar, TextView, EditText};
 import android.view.{View, Menu, MenuInflater, MenuItem};
 import android.util.Log;
 
@@ -23,22 +23,26 @@ class MainActivity extends Activity{
                                    getResources().getInteger(R.integer.rssi_max))
   lazy val seekBarRssi:SeekBar = findViewById(R.id.seekBarRssi).asInstanceOf[SeekBar]
   lazy val textViewRssi:TextView = findViewById(R.id.textViewRssi).asInstanceOf[TextView]
+  lazy val editTextWho:EditText = findViewById(R.id.editTextWho).asInstanceOf[EditText]
 
   override def onCreate(savedInstanceState:Bundle){
     super.onCreate(savedInstanceState)
     setContentView(R.layout.main)
 
     var threshold:Int = pref.getInt("threshold", rssiRange(rssiRange.size/2))
+    var who:String = pref.getString("who", getResources().getString(R.string.default_who))
 
     print(s"app start (threshold:${threshold})")
 
     val self = this
 
     setTitle(s"${appName} v${version}")
+    editTextWho.setText(who)
 
     btnStart.setOnClickListener( new View.OnClickListener(){
       override def onClick(v:View){
         prefEdit.putInt("threshold", threshold)
+        prefEdit.putString("who", editTextWho.getText().toString().replaceAll("[\r\n]","").trim())
         prefEdit.commit()
         self.startService(serviceIntent)
       }
