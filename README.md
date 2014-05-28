@@ -2,6 +2,11 @@ Linda iBeacon Android
 =====================
 - https://github.com/node-linda/ibeacon-android
 
+- detect Region by iBeacon
+- write Region Tuple
+  - {region: "name", who: "shokai", action: "enter"}
+  - {region: "name", who: "shokai", action: "leave"}
+
 
 Dependencies
 ------------
