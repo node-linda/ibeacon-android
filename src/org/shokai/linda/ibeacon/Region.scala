@@ -21,7 +21,7 @@ class Region(baseUrl:String, space:String, who:String){
 
   private def post(tuple:String){
     val post = new HttpPost(s"${baseUrl}/${space}")
-    post.setEntity(new UrlEncodedFormEntity( 
+    post.setEntity(new UrlEncodedFormEntity(
       List( new BasicNameValuePair("tuple", tuple) )
     ))
     client.execute(post)

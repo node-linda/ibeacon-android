@@ -3,7 +3,7 @@
   <string name="app_name">linda-iBeacon</string>
   <string name="version">0.1.0</string>
   <string name="github">https://github.com/node-linda/ibeacon-android</string>
-  <string name="linda">http://node-linda-base.herokuapp.com</string>
+  <string name="linda">https://linda-server.herokuapp.com</string>
   <string name="tuplespace">masuilab</string>
   <string name="uuid">B0FC4601-14A6-43A1-ABCD-CB9CFDDB4013</string>
   <string name="major">0001</string>
