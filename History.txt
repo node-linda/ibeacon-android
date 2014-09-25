@@ -1,3 +1,8 @@
+=== 0.1.1 2013-09-25
+
+* switch linda server
+  * node-linda-base.herokuapp -> linda-server.herokuapp
+
 === 0.1.0 2013-05-28
 
 * write Region tuple

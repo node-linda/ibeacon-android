@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">linda-iBeacon</string>
-  <string name="version">0.1.0</string>
+  <string name="version">0.1.1</string>
   <string name="github">https://github.com/node-linda/ibeacon-android</string>
   <string name="linda">https://linda-server.herokuapp.com</string>
   <string name="tuplespace">masuilab</string>
